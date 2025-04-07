@@ -112,7 +112,7 @@ module RedmineZulip
     def notify_assignment
       locale = assigned_to.language.present? ?
                  assigned_to.language : Setting.default_language
-      message = I18n.t("zulip_notify_assignment", {
+      message = I18n.t("zulip_notify_assignment", **{
         locale: locale,
         user: User.current.name,
         id: id,
@@ -145,7 +145,7 @@ module RedmineZulip
       if previous_changes.nil?
         locale = previous_assigned_to.language.present? ?
                   previous_assigned_to.language : Setting.default_language
-        message = I18n.t("zulip_notify_unassignment", {
+        message = I18n.t("zulip_notify_unassignment", **{
           user: User.current.name,
           id: id,
           url: url,
@@ -164,7 +164,7 @@ module RedmineZulip
     def notify_assigned_to_issue_updated
       locale = assigned_to.language.present? ?
                  assigned_to.language : Setting.default_language
-      message = I18n.t("zulip_notify_updated", {
+      message = I18n.t("zulip_notify_updated", **{
         user: User.current.name,
         id: id,
         url: url,
@@ -225,7 +225,7 @@ module RedmineZulip
     def notify_assigned_to_issue_destroyed
       locale = assigned_to.language.present? ?
                  assigned_to.language : Setting.default_language
-      message = I18n.t("zulip_notify_destroyed", {
+      message = I18n.t("zulip_notify_destroyed", **{
         user: User.current.name,
         id: id,
         project: project.name,
@@ -241,7 +241,7 @@ module RedmineZulip
 
     def init_issue_subject
       locale = Setting.default_language
-      message = I18n.t("zulip_init_issue_subject", {
+      message = I18n.t("zulip_init_issue_subject", **{
         locale: locale,
         user: User.current.name,
         id: id,
@@ -272,7 +272,7 @@ module RedmineZulip
 
     def update_issue_subject
       locale = Setting.default_language
-      message = I18n.t("zulip_notify_updated", {
+      message = I18n.t("zulip_notify_updated", **{
         locale: locale,
         user: User.current.name,
         id: id,
@@ -346,7 +346,7 @@ module RedmineZulip
     end
 
     def update_issue_subject_destroyed
-      message = I18n.t("zulip_notify_destroyed", {
+      message = I18n.t("zulip_notify_destroyed", **{
         locale: Setting.default_language,
         user: User.current.name,
         id: id,
@@ -362,7 +362,7 @@ module RedmineZulip
     end
 
     def update_version_subject_added
-      message = I18n.t("zulip_update_version_subject_added", {
+      message = I18n.t("zulip_update_version_subject_added", **{
         locale: Setting.default_language,
         user: User.current.name,
         id: id,
@@ -383,7 +383,7 @@ module RedmineZulip
       previous_fixed_version = Version.find(
         previous_changes["fixed_version_id"].first
       )
-      message = I18n.t("zulip_update_version_subject_removed", {
+      message = I18n.t("zulip_update_version_subject_removed", **{
         locale: Setting.default_language,
         user: User.current.name,
         id: id,
@@ -402,7 +402,7 @@ module RedmineZulip
 
     def update_version_subject_status
       previous_status_id = previous_changes["status_id"].first
-      message = I18n.t("zulip_update_version_subject_status", {
+      message = I18n.t("zulip_update_version_subject_status", **{
         locale: Setting.default_language,
         user: User.current.name,
         id: id,
@@ -421,7 +421,7 @@ module RedmineZulip
     end
 
     def update_version_subject_destroyed
-      message = I18n.t("zulip_notify_destroyed", {
+      message = I18n.t("zulip_notify_destroyed", **{
         locale: Setting.default_language,
         user: User.current.name,
         id: id,
